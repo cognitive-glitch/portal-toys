@@ -3,29 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portal List Viewer</title>
+    <title>PORTAL // INDEX</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="titlebar">
-        <h1>Portal List</h1>
-        <input id="searchBox" class="input search top-search" placeholder="Search by name or URL" />
-      </div>
-
-      <div class="toolbar">
-        <div class="reg-group">
-          <input id="portalInput" class="input" placeholder="https://your.portal.host or https://service-domain" />
-          <button id="portalAddBtn" class="btn" title="Register this portal">Register Portal</button>
+    <main class="layout">
+      <header class="command-deck">
+        <div class="deck-top">
+          <h1 class="brand">PORTAL_LIST <span class="ver">v2.0</span></h1>
+          <div id="statusBar" class="status-badge ready" aria-live="polite">SYSTEM_READY</div>
         </div>
-        <button id="refresh" class="btn" title="Refresh list">Refresh</button>
-      </div>
 
-      <div id="statusBar" class="status-bar" aria-live="polite"></div>
+        <div class="deck-controls sticky-controls">
+          <div class="control-group search-block">
+            <label for="searchBox" class="sr-only">Search Portals</label>
+            <input id="searchBox" class="neo-input" placeholder="SEARCH_TARGET..." autocomplete="off" />
+          </div>
+          
+          <div class="control-group actions-block">
+            <button id="refresh" class="neo-btn icon-btn" title="FORCE REFRESH">
+              <span class="btn-text">REFRESH</span>
+              <span class="btn-icon">↻</span>
+            </button>
+          </div>
+        </div>
 
-      <div id="list" class="list"></div>
+        <div class="deck-register">
+          <div class="register-input-wrapper">
+            <label for="portalInput" class="sr-only">New Portal URL</label>
+            <input id="portalInput" class="neo-input" placeholder="https://portal.host.name" />
+          </div>
+          <button id="portalAddBtn" class="neo-btn primary-btn">REGISTER_NODE</button>
+        </div>
+      </header>
 
-      <script type="module" src="/app.js"></script>
-    </div>
+      <section id="list" class="portal-grid" aria-label="Portal List">
+        <!-- Portal Cards will be injected here -->
+      </section>
+      
+      <div id="toastContainer" class="toast-container"></div>
+    </main>
+    
+    <script type="module" src="/app.js"></script>
   </body>
-  </html>
+</html>
